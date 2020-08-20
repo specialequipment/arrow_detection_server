@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0" stylesheets="@../application.css"
+            xmlns="http://javafx.com/javafx/10.0.2-internal"
+            fx:controller="de.woodpecker.archery.arrowdetection.ui.MainController">
+    <top>
+        <GridPane alignment="CENTER" styleClass="mainColor" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fx:id="logo" fitHeight="26.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true"
+                           smooth="false">
+                    <image>
+                        <Image url="@../resources/woodpecker.png"/>
+                    </image>
+                    <effect>
+                        <Glow level="0.44"/>
+                    </effect>
+                </ImageView>
+                <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.valignment="CENTER">
+                    <children>
+                        <Label text="Pfeilerkennung">
+                            <font>
+                                <Font name="Courier New Bold" size="18.0"/>
+                            </font>
+                        </Label>
+                        <MenuButton mnemonicParsing="false" styleClass="mainButton" text="Einstellungen">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#loadCameraSelector" text="1. Kamera"/>
+                                <MenuItem fx:id="menuItemCameraCalibration" disable="true" mnemonicParsing="false"
+                                          onAction="#loadCalibration" text="2. Kamera Kalibrierung"/>
+                                <MenuItem fx:id="menuItemPerspectivCorrection" disable="true" mnemonicParsing="false"
+                                          onAction="#loadPerspectiveCorrection" text="3. Perspektivenkorrektur"/>
+                                <MenuItem fx:id="menuItemRegionOfInterest" disable="true" mnemonicParsing="false"
+                                          onAction="#loadRegionOfInterest" text="4. Erkennungsbereich"/>
+                                <MenuItem fx:id="menuItemBackgroundRemover" mnemonicParsing="false"
+                                          onAction="#loadBackgroundRemover" text="5. Hintergrund entfernen"/>
+                                <MenuItem fx:id="menuItemOptimisation" disable="true" mnemonicParsing="false"
+                                          onAction="#loadArrowDetectionSettings" text="6. Pfeilerkennung optimieren"/>
+                            </items>
+                        </MenuButton>
+                        <Button fx:id="showTest" disable="true" mnemonicParsing="false" onAction="#showTest"
+                                styleClass="mainButtonHighlighted" text="Test"/>
+                        <Button fx:id="startServer" disable="true" mnemonicParsing="false" onAction="#startServer"
+                                styleClass="mainButtonHighlighted" text="Server starten"/>
+                    </children>
+                </HBox>
+            </children>
+            <columnConstraints>
+                <ColumnConstraints hgrow="NEVER" prefWidth="31"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="ALWAYS"/>
+                <RowConstraints vgrow="ALWAYS"/>
+            </rowConstraints>
+            <padding>
+                <Insets left="5.0" right="5.0"/>
+            </padding>
+        </GridPane>
+    </top>
+    <bottom>
+        <HBox prefWidth="200.0" styleClass="mainColor" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Developed by Woodpecker">
+                    <font>
+                        <Font size="10.0"/>
+                    </font>
+                </Label>
+            </children>
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+        </HBox>
+    </bottom>
+    <center>
+        <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <items>
+                <BorderPane fx:id="mainArea" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0"/>
+                <Pane fx:id="imageContainer" prefHeight="200.0" prefWidth="200.0" styleClass="blackBackground">
+                    <children>
+                        <ImageView fx:id="cameraPreview" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
+                                   preserveRatio="true"/>
+                    </children>
+                </Pane>
+            </items>
+        </SplitPane>
+    </center>
+</BorderPane>

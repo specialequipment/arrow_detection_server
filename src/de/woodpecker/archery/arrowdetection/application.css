@@ -1,0 +1,133 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.blackBackground {
+    -fx-background-color: #000000;
+}
+
+.mainColor {
+    -fx-background-color: #37af15;
+}
+
+.standardBackground {
+    -fx-background-color: #efefef;
+}
+
+.mainButton {
+    -fx-background-color: #37af15;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0, 0, 0, 0;
+    -fx-padding: 3 10 3 10;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+    -fx-pref-height: 40;
+    -fx-font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+    -fx-font-weight: normal;
+    -fx-font-style: normal;
+}
+
+.mainButton:hover {
+    -fx-background-color: #72d958;
+}
+
+.mainButton:pressed {
+    -fx-background-color: #205713;
+    -fx-text-fill: white;
+}
+
+.mainButtonHighlighted {
+    -fx-background-color: #39de0a;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 5, 5, 5;
+    -fx-padding: 3 10 3 10;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+    -fx-border-color: #205713;
+    -fx-border-radius: 5, 5, 5, 5;
+}
+
+.mainButtonHighlighted:focused {
+    -fx-background-color: #b2e0a6;
+}
+
+.mainButtonHighlighted:disabled {
+    -fx-text-fill: lightgray;
+}
+
+.mainButtonHighlighted:hover {
+    -fx-background-color: #72d958;
+}
+
+.mainButtonHighlighted:pressed {
+    -fx-background-color: #205713;
+    -fx-text-fill: white;
+}
+
+.menu-item .label {
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+}
+
+.menu-item {
+    -fx-padding: 3 10 3 10;
+    -fx-pref-height: 40;
+}
+
+.menu-item:pressed {
+    -fx-background-color: #205713;
+    -fx-text-fill: white;
+}
+
+.menu-item:focused {
+    -fx-background-color: #b2e0a6;
+}
+
+.menu-item:hover {
+    -fx-background-color: #72d958;
+}
+
+.menu-item:disabled {
+    -fx-text-fill: lightgray;
+}
+
+.context-menu {
+    -fx-background-color: #37af15;
+    -fx-background-radius: 0, 0, 0, 0;
+    -fx-padding: 0, 0, 0, 0;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+}
+
+.menu-button .label {
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+}
+
+.menu-button {
+    -fx-padding: 0, 0, 0, 0;
+}
+
+.defaultBackground {
+    -fx-background-image: url("resources/wallhaven-1920.jpg");
+    -fx-background-position: center center;
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+}
+
+.list-view:focused {
+    -fx-focus-color: #37af15;
+}
+
+.list-cell:focused {
+    -fx-focus-color: #37af15;
+}
+
+.list-cell:selected {
+    -fx-background-color: #37af15;
+}
+
+.text-field:focused {
+    -fx-focus-color: #37af15;
+}
+
+.button:focused {
+    -fx-focus-color: #37af15;
+}

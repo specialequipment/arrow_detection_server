@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0" styleClass="standardBackground"
+            stylesheets="@../../application.css" xmlns="http://javafx.com/javafx/10.0.2-internal"
+            fx:controller="de.woodpecker.archery.arrowdetection.ui.Settings.CameraSelectorController">
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <top>
+            <Label fx:id="headline" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="18.0"/>
+               </font>
+            </Label>
+         </top>
+         <BorderPane.margin>
+            <Insets left="5.0" right="5.0" top="5.0"/>
+         </BorderPane.margin>
+         <bottom>
+            <HBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#saveAndClose" text="Speichern">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
+         <center>
+            <GridPane prefHeight="327.0" prefWidth="296.0" vgap="5.0" BorderPane.alignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="NEVER" maxWidth="122.0" minWidth="96.0" prefWidth="115.0"/>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="100.0" prefWidth="111.0"/>
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints vgrow="NEVER"/>
+                  <RowConstraints vgrow="NEVER"/>
+                  <RowConstraints vgrow="NEVER"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS"/>
+               </rowConstraints>
+               <children>
+                  <Label fx:id="labelWidth" text="Auflösung Breite"/>
+                  <Label fx:id="labelHeight" text="Auflösung Höhe" GridPane.rowIndex="1"/>
+                  <Label text="Name" GridPane.rowIndex="2"/>
+                  <TextField fx:id="width" GridPane.columnIndex="1"/>
+                  <TextField fx:id="height" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                  <TextField fx:id="dispalayName" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+               </children>
+            </GridPane>
+         </center>
+      </BorderPane>
+   </center>
+   <left>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <center>
+            <ListView fx:id="videoInputListView" prefHeight="370.0" prefWidth="267.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+               </BorderPane.margin>
+            </ListView>
+         </center>
+         <BorderPane.margin>
+            <Insets right="5.0" top="5.0"/>
+         </BorderPane.margin>
+         <top>
+            <HBox BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#openFile" text="+"/>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </left>
+</BorderPane>
