@@ -106,7 +106,6 @@
 }
 
 .defaultBackground {
-    -fx-background-image: url("resources/wallhaven-1920.jpg");
     -fx-background-position: center center;
     -fx-background-repeat: stretch;
     -fx-background-size: cover;
