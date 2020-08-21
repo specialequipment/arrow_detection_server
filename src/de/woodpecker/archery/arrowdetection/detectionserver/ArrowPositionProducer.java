@@ -110,13 +110,13 @@ public class ArrowPositionProducer implements Runnable {
     }
 
     private void detect() throws InterruptedException {
+        Mat frame = new Mat();
         while (capture != null) {
             // sollte abgebrochen werden
 
             // Von der Kamera lesen
             //ToDo: prüfen ob ThreadSleep die richtige Variante ist, ggf anderen Ansatz implementieren und parametrisieren
             //Thread.sleep(100);
-            Mat frame = new Mat();
             capture.read(frame);
             if (!frame.empty()) {
                 // Kamera kalibrierung anwenden

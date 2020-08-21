@@ -25,14 +25,15 @@ public class CamerasProducer implements Runnable {
     private void searchForAvailableCameras() throws InterruptedException {
         for (int type : TYPES) {
             for (int j = 0; j < 100; j++) {
-                reolveCameraForIndex(j + type, type);
+                resolveCameraForIndex(j + type, type);
             }
         }
         cameraQueue.put(poisonPill);
     }
 
-    private void reolveCameraForIndex(int cameraIndex, int type) throws InterruptedException {
+    private void resolveCameraForIndex(int cameraIndex, int type) throws InterruptedException {
         try {
+            stopCamera();
             camera.open(cameraIndex);
             if (camera.isOpened()) {
                 String name = camera.getBackendName();
@@ -52,6 +53,12 @@ public class CamerasProducer implements Runnable {
         } finally {
             camera.release();
         }
+    }
+
+    private void stopCamera() {
+        if (!camera.isOpened())
+            return;
+        camera.release();
     }
 
     @Override
