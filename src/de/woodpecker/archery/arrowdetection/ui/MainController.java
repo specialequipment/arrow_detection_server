@@ -59,18 +59,13 @@ public class MainController implements ApplicationController, VisualizationContr
     public void centerImage() {
         Image img = cameraPreview.getImage();
         if (img != null) {
-            double w = 0;
-            double h = 0;
+            double w;
+            double h;
 
             double ratioX = cameraPreview.getFitWidth() / img.getWidth();
             double ratioY = cameraPreview.getFitHeight() / img.getHeight();
 
-            double reducCoeff = 0;
-            if (ratioX >= ratioY) {
-                reducCoeff = ratioY;
-            } else {
-                reducCoeff = ratioX;
-            }
+            double reducCoeff = Math.min(ratioX, ratioY);
 
             w = img.getWidth() * reducCoeff;
             h = img.getHeight() * reducCoeff;

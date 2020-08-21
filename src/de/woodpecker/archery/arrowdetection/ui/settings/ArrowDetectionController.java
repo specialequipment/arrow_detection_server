@@ -1,4 +1,4 @@
-package de.woodpecker.archery.arrowdetection.ui.Settings;
+package de.woodpecker.archery.arrowdetection.ui.settings;
 
 import de.woodpecker.archery.arrowdetection.ArrowPosition;
 import de.woodpecker.archery.arrowdetection.imageprocessors.*;
@@ -78,6 +78,7 @@ public class ArrowDetectionController extends AnalyserController implements Visu
                 preview.setCursor(Cursor.DEFAULT);
             }
         });
+        //ToDo: Funktionalität generalisieren (Wird auch im RegionOfInterestController verwendet)
         preview.setOnMouseMoved(arg0 -> {
             Point newPoint = new Point(arg0.getX() * preview.getScaleX(), arg0.getY() * preview.getScaleY());
             if (pointToChange == null) {

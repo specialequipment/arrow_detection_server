@@ -3,7 +3,6 @@ package de.woodpecker.archery.arrowdetection;
 import de.woodpecker.archery.arrowdetection.captures.Camera;
 import de.woodpecker.archery.arrowdetection.captures.VideoFile;
 import de.woodpecker.archery.arrowdetection.captures.VideoInput;
-import de.woodpecker.archery.arrowdetection.utils.SettingsLoader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -14,10 +13,6 @@ public class AnalyserSettings {
     private final List<VideoInput> videoInputs = new ArrayList<>();
     private final ObservableList<VideoInput> availableVideoInput = FXCollections.observableList(videoInputs);
     private VideoInput activeVideoInput;
-
-    public AnalyserSettings() {
-        SettingsLoader loader = new SettingsLoader(this);
-    }
 
     public void addVideoAndActivate(VideoFile videoFile) {
         availableVideoInput.add(videoFile);

@@ -9,21 +9,19 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ClientDispatcher extends Thread {
     private final BlockingQueue<String> messages;
     private final BlockingQueue<String> sendActions;
-    private final String poisonPill = "#";
 
     private final Socket socket;
-    private final Server server;
     private final AtomicBoolean running = new AtomicBoolean(false);
     private final Receiver receiver;
     private final Transmitter transmitter;
 
     public ClientDispatcher(Socket socket, Server server, DetectionController detectionController) throws IOException {
         this.socket = socket;
-        this.server = server;
         messages = new LinkedBlockingDeque<>();
         sendActions = new LinkedBlockingDeque<>();
-        this.receiver = new Receiver(this, messages, this.poisonPill);
-        this.transmitter = new Transmitter(this, sendActions, this.poisonPill, detectionController);
+        String poisonPill = "#";
+        this.receiver = new Receiver(this, messages, poisonPill);
+        this.transmitter = new Transmitter(this, sendActions, poisonPill, detectionController);
     }
 
     private void processMessage(String msg) throws InterruptedException {

@@ -10,13 +10,13 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Server extends Thread {
-    private final List<ClientDispatcher> clientDispatchers = new ArrayList();
+    private final List<ClientDispatcher> clientDispatchers;
     private final DetectionController detectionController;
     private final AtomicBoolean running = new AtomicBoolean(false);
-    private ServerSocket serverSocket;
 
     public Server(AnalyserSettings settings) {
         detectionController = new DetectionController(settings);
+        clientDispatchers = new ArrayList<>();
     }
 
     @Override
@@ -27,7 +27,7 @@ public class Server extends Thread {
 
     private void startServer(int port) {
         try {
-            serverSocket = new ServerSocket(port);
+            ServerSocket serverSocket = new ServerSocket(port);
             detectionController.start();
 
             while (running.get()) {

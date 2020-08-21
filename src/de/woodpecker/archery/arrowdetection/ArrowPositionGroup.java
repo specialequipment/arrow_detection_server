@@ -10,55 +10,47 @@ import java.util.List;
  * Zusammenfassen von erkannten Pfeilen, um eine Doppelterkennung zu vermeiden
  */
 public class ArrowPositionGroup {
-    static int groupingDistance = 100;
-    static double slopeTolleranz = 10;
-    static int groupingTimeRange = 200;//in milliseconds
+    static final int GROUPING_DISTANCE = 100;
+    static final double SLOPE_TOLLERANZ = 10;
+    static final int GROUPING_TIME_RANGE = 200;//in milliseconds
     private final List<ArrowPosition> hits = new ArrayList<>();
 
     public boolean groupTimedOut() {
-        if (hits.size() == 0)
+        if (hits.isEmpty())
             return false;
 
-        return new Date().getTime() - hits.get(0).getCaptured().getTime() > groupingTimeRange;
+        return new Date().getTime() - hits.get(0).getCaptured().getTime() > GROUPING_TIME_RANGE;
     }
 
     public boolean addArrowPosition(ArrowPosition pos) {
         // Gruppe leer, dann immer einfügen
-        if (hits.size() == 0) {
+        if (hits.isEmpty()) {
             hits.add(pos);
-            debug(pos, "keine Gruppe vorhanden");
             return true;
         }
 
         // Ermitteln, ob der erste erkannte Pfeil der Gruppe zeitlich nicht zu weit entfernt liegt
         ArrowPosition firstHit = hits.get(0);
         long dif = pos.getCaptured().getTime() - firstHit.getCaptured().getTime();
-        if (dif > groupingTimeRange) {
-            debug(pos, "Zeit der Gruppe überschritten: " + dif);
+        if (dif > GROUPING_TIME_RANGE) {
             return false;
         }
 
         // ermitteln ob der neue Pfeil eine ähnliche Steigung enthält und in der nähe des ersten Pfeils liegt
         double slopeDiff = Math.abs(firstHit.getSlope() - pos.getSlope());
-        if (slopeDiff > slopeTolleranz) {
-            debug(pos, "Steigung weicht ab: " + slopeDiff);
+        if (slopeDiff > SLOPE_TOLLERANZ) {
             return false;
         }
 
         // Abstand zur ursprünglichen gerade darf nicht zu groß sein
         double distance = calcDist(firstHit, pos);
         distance = Math.abs(distance);
-        if (distance > groupingDistance) {
-            debug(pos, "Entfernung zum vorhergehenden Treffer zu groß: " + distance);
+        if (distance > GROUPING_DISTANCE) {
             return false;
         }
 
         hits.add(pos);
         return true;
-    }
-
-    private void debug(ArrowPosition pos, String msg) {
-        //System.out.println(pos.toString() + " - " + msg);
     }
 
     private double calcDist(ArrowPosition firstHit, ArrowPosition pos) {

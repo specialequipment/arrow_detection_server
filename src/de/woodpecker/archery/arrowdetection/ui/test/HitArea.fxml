@@ -10,70 +10,68 @@
             fx:controller="de.woodpecker.archery.arrowdetection.ui.test.HitAreaController">
    <center>
       <SplitPane dividerPositions="0.49748743718592964" orientation="VERTICAL">
-         <items>
-            <AnchorPane minHeight="0.0" prefHeight="200.0" prefWidth="200.0" styleClass="blackBackground"
-                        stylesheets="@../../application.css" SplitPane.resizableWithParent="false"/>
-            <SplitPane dividerPositions="0.7766497461928934" minHeight="10.0" minWidth="10.0" orientation="VERTICAL"
-                       prefHeight="200.0" prefWidth="160.0">
-               <items>
-                  <BorderPane minHeight="10.0" minWidth="10.0" styleClass="blackBackground"
-                              stylesheets="@../../application.css">
-                     <left>
-                        <VBox prefHeight="150.0" prefWidth="142.0" styleClass="standardBackground"
-                              BorderPane.alignment="CENTER">
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="500.0" text="Treffer"
-                                     textAlignment="CENTER">
-                                 <font>
-                                    <Font name="Calibri" size="24.0"/>
-                                 </font>
-                              </Label>
-                              <Label fx:id="hitsLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="500.0"
-                                     text="0" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="Calibri" size="20.0"/>
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="500.0" text="Position"
-                                     textAlignment="CENTER">
-                                 <font>
-                                    <Font name="Calibri" size="24.0"/>
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="10.0"/>
-                                 </VBox.margin>
-                              </Label>
-                              <Label fx:id="lastPositionLabel" alignment="CENTER" contentDisplay="CENTER"
-                                     prefWidth="500.0" text="1200 / 1420" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="Calibri" size="20.0"/>
-                                 </font>
-                              </Label>
-                           </children>
-                           <BorderPane.margin>
-                              <Insets/>
-                           </BorderPane.margin>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
-                           </padding>
-                        </VBox>
-                     </left>
-                     <center>
-                        <Pane fx:id="imgParent" prefHeight="200.0" prefWidth="200.0" styleClass="defaultBackground"
-                              BorderPane.alignment="CENTER">
-                           <children>
-                              <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
-                                         preserveRatio="true">
-                              </ImageView>
-                           </children>
-                        </Pane>
-                     </center>
-                  </BorderPane>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0"
-                              styleClass="blackBackground" stylesheets="@../../application.css"/>
-               </items>
-            </SplitPane>
-         </items>
+         <AnchorPane minHeight="0.0" prefHeight="200.0" prefWidth="200.0" styleClass="blackBackground"
+                     stylesheets="@../../application.css" SplitPane.resizableWithParent="false"/>
+         <SplitPane dividerPositions="0.7766497461928934" minHeight="10.0" minWidth="10.0" orientation="VERTICAL"
+                    prefHeight="200.0" prefWidth="160.0">
+            <items>
+               <BorderPane minHeight="10.0" minWidth="10.0" styleClass="blackBackground"
+                           stylesheets="@../../application.css">
+                  <left>
+                     <VBox prefHeight="150.0" prefWidth="142.0" styleClass="standardBackground"
+                           BorderPane.alignment="CENTER">
+                        <children>
+                           <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="500.0" text="Treffer"
+                                  textAlignment="CENTER">
+                              <font>
+                                 <Font name="Calibri" size="24.0"/>
+                              </font>
+                           </Label>
+                           <Label fx:id="hitsLabel" alignment="CENTER" contentDisplay="CENTER" prefWidth="500.0"
+                                  text="0" textAlignment="CENTER">
+                              <font>
+                                 <Font name="Calibri" size="20.0"/>
+                              </font>
+                           </Label>
+                           <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="500.0" text="Position"
+                                  textAlignment="CENTER">
+                              <font>
+                                 <Font name="Calibri" size="24.0"/>
+                              </font>
+                              <VBox.margin>
+                                 <Insets top="10.0"/>
+                              </VBox.margin>
+                           </Label>
+                           <Label fx:id="lastPositionLabel" alignment="CENTER" contentDisplay="CENTER"
+                                  prefWidth="500.0" text="1200 / 1420" textAlignment="CENTER">
+                              <font>
+                                 <Font name="Calibri" size="20.0"/>
+                              </font>
+                           </Label>
+                        </children>
+                        <BorderPane.margin>
+                           <Insets/>
+                        </BorderPane.margin>
+                        <padding>
+                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        </padding>
+                     </VBox>
+                  </left>
+                  <center>
+                     <Pane fx:id="imgParent" prefHeight="200.0" prefWidth="200.0" styleClass="defaultBackground"
+                           BorderPane.alignment="CENTER">
+                        <children>
+                           <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
+                                      preserveRatio="true">
+                           </ImageView>
+                        </children>
+                     </Pane>
+                  </center>
+               </BorderPane>
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0"
+                           styleClass="blackBackground" stylesheets="@../../application.css"/>
+            </items>
+         </SplitPane>
       </SplitPane>
    </center>
 </BorderPane>

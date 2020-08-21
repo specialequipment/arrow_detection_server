@@ -34,9 +34,7 @@ public class SettingsLoader {
                         timer.cancel();
                         timer.purge();
                     } else {
-                        Platform.runLater(() -> {
-                            settings.addCameraToList(cam);
-                        });
+                        Platform.runLater(() -> settings.addCameraToList(cam));
                     }
                 } catch (InterruptedException e) {
                     timer.cancel();

@@ -11,15 +11,13 @@ import java.beans.XMLEncoder;
 import java.io.*;
 
 public abstract class VideoInput {
-    final static String settingsFileName = "D:\\target\\settings_";
-    final static String settingsFileExtension = ".xml";
+    private static final String SETTINGS_FILE_NAME = "D:\\target\\settings_";
+    private static final String SETTINGS_FILE_EXTENSION = ".xml";
     protected final StringProperty displayName = new SimpleStringProperty();
     protected Settings settings;
 
     public VideoInput() {
-        if (settings == null) {
-            settings = new Settings();
-        }
+        settings = new Settings();
     }
 
     public abstract Image getPreviewImage();
@@ -42,11 +40,11 @@ public abstract class VideoInput {
     public abstract void openCapture(VideoCapture capture);
 
     public void loadSettings() {
-        File file = new File(settingsFileName + getId() + settingsFileExtension);
+        File file = new File(SETTINGS_FILE_NAME + getId() + SETTINGS_FILE_EXTENSION);
         if (!file.exists())
             return;
 
-        FileInputStream fis = null;
+        FileInputStream fis;
         try {
             fis = new FileInputStream(file);
         } catch (FileNotFoundException e) {
@@ -68,14 +66,17 @@ public abstract class VideoInput {
     public void save() {
         FileOutputStream fos;
         try {
-            fos = new FileOutputStream(settingsFileName + getId() + settingsFileExtension);
-            XMLEncoder encoder = new XMLEncoder(fos);
-            encoder.setExceptionListener(e -> System.out.println("Exception! :" + e.toString()));
-            encoder.writeObject(settings);
-            encoder.close();
-            fos.close();
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
+            fos = new FileOutputStream(SETTINGS_FILE_NAME + getId() + SETTINGS_FILE_EXTENSION);
+            XMLEncoder encoder = null;
+            try {
+                encoder = new XMLEncoder(fos);
+                encoder.setExceptionListener(e -> System.out.println("Exception! :" + e.toString()));
+                encoder.writeObject(settings);
+            } finally {
+                if (encoder != null)
+                    encoder.close();
+                fos.close();
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }

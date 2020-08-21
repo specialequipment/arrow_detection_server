@@ -4,10 +4,9 @@ import de.woodpecker.archery.arrowdetection.AnalyserSettings;
 import de.woodpecker.archery.arrowdetection.imageprocessors.ImageProcessor;
 
 public abstract class AnalyserController {
-    protected final static AnalyserSettings settings = new AnalyserSettings();
+    protected static final AnalyserSettings settings = new AnalyserSettings();
     protected ApplicationController applicationController;
     protected ImageProcessor mainImageProcessor;
-    private VisualizationController resultVisualizationController;
 
     public AnalyserController() {
     }
@@ -17,7 +16,6 @@ public abstract class AnalyserController {
     }
 
     public void setResultVisualizationController(VisualizationController resultVisualizationController) {
-        this.resultVisualizationController = resultVisualizationController;
         if (mainImageProcessor != null) {
             mainImageProcessor.setResultController(resultVisualizationController);
         }

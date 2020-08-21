@@ -53,8 +53,7 @@ public class PerspectiveCorrectionImageProcessorSettings implements Serializable
             }
         }
 
-        Point[] result = {point1, point3, point2, point4};
-        return result;
+        return new Point[]{point1, point3, point2, point4};
     }
 
     public boolean allPerspectiveCorrectionPointsSet() {

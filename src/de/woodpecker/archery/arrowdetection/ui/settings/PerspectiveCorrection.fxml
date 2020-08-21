@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
             xmlns="http://javafx.com/javafx/10.0.2-internal"
-            fx:controller="de.woodpecker.archery.arrowdetection.ui.Settings.PerspectiveCorrectionController">
+            fx:controller="de.woodpecker.archery.arrowdetection.ui.settings.PerspectiveCorrectionController">
    <center>
       <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <ImageView fx:id="editorView" pickOnBounds="true" preserveRatio="true"/>
@@ -20,20 +20,16 @@
    </padding>
    <bottom>
       <HBox alignment="TOP_RIGHT" fillHeight="false" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" onAction="#saveAndClose" text="Speichern"/>
-         </children>
          <padding>
             <Insets top="10.0"/>
          </padding>
+         <Button mnemonicParsing="false" onAction="#saveAndClose" text="Speichern"/>
       </HBox>
    </bottom>
    <left>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Zoom"/>
-            <Slider fx:id="zoomSLider" blockIncrement="1.0" max="500.0" min="100.0" value="100.0"/>
-         </children>
+         <Label text="Zoom"/>
+         <Slider fx:id="zoomSLider" blockIncrement="1.0" max="500.0" min="100.0" value="100.0"/>
       </VBox>
    </left>
 </BorderPane>

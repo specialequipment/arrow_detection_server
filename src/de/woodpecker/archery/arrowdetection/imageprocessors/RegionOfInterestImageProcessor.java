@@ -26,8 +26,7 @@ public class RegionOfInterestImageProcessor extends ImageProcessor {
         if (roi == null)
             return sourceMat;
 
-        Mat imageROI = new Mat(sourceMat, roi);
-        return imageROI;
+        return new Mat(sourceMat, roi);
     }
 
 

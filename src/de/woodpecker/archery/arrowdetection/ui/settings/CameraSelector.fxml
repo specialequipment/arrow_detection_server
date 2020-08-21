@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0" styleClass="standardBackground"
             stylesheets="@../../application.css" xmlns="http://javafx.com/javafx/10.0.2-internal"
-            fx:controller="de.woodpecker.archery.arrowdetection.ui.Settings.CameraSelectorController">
+            fx:controller="de.woodpecker.archery.arrowdetection.ui.settings.CameraSelectorController">
    <center>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <top>
@@ -21,13 +21,11 @@
          </BorderPane.margin>
          <bottom>
             <HBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" BorderPane.alignment="CENTER">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#saveAndClose" text="Speichern">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
-                     </HBox.margin>
-                  </Button>
-               </children>
+               <Button mnemonicParsing="false" onAction="#saveAndClose" text="Speichern">
+                  <HBox.margin>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                  </HBox.margin>
+               </Button>
             </HBox>
          </bottom>
          <center>
@@ -42,14 +40,12 @@
                   <RowConstraints vgrow="NEVER"/>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS"/>
                </rowConstraints>
-               <children>
-                  <Label fx:id="labelWidth" text="Auflösung Breite"/>
-                  <Label fx:id="labelHeight" text="Auflösung Höhe" GridPane.rowIndex="1"/>
-                  <Label text="Name" GridPane.rowIndex="2"/>
-                  <TextField fx:id="width" GridPane.columnIndex="1"/>
-                  <TextField fx:id="height" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                  <TextField fx:id="dispalayName" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-               </children>
+               <Label fx:id="labelWidth" text="Auflösung Breite"/>
+               <Label fx:id="labelHeight" text="Auflösung Höhe" GridPane.rowIndex="1"/>
+               <Label text="Name" GridPane.rowIndex="2"/>
+               <TextField fx:id="width" GridPane.columnIndex="1"/>
+               <TextField fx:id="height" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+               <TextField fx:id="dispalayName" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
             </GridPane>
          </center>
       </BorderPane>
@@ -68,9 +64,7 @@
          </BorderPane.margin>
          <top>
             <HBox BorderPane.alignment="CENTER">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#openFile" text="+"/>
-               </children>
+               <Button mnemonicParsing="false" onAction="#openFile" text="+"/>
             </HBox>
          </top>
       </BorderPane>

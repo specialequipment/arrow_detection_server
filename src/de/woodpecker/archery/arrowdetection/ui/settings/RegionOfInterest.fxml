@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
             xmlns="http://javafx.com/javafx/10.0.2-internal"
-            fx:controller="de.woodpecker.archery.arrowdetection.ui.Settings.RegionOfInterestController">
+            fx:controller="de.woodpecker.archery.arrowdetection.ui.settings.RegionOfInterestController">
    <center>
       <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <ImageView fx:id="editorView" pickOnBounds="true" preserveRatio="true"/>
@@ -19,12 +19,10 @@
    </padding>
    <bottom>
       <HBox alignment="TOP_RIGHT" fillHeight="false" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" onAction="#saveAndClose" text="Speichern"/>
-         </children>
          <padding>
             <Insets top="10.0"/>
          </padding>
+         <Button mnemonicParsing="false" onAction="#saveAndClose" text="Speichern"/>
       </HBox>
    </bottom>
 </BorderPane>

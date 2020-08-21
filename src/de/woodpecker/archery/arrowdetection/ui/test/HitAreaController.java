@@ -99,20 +99,18 @@ public class HitAreaController extends AnalyserController {
                     arrowDetected = true;
                 }
 
-                if (arrowDetected) {
-                    Image hitVisualizationImage = Utils.mat2Image(newMat);
-                    // show the original frames
-                    Platform.runLater(() -> {
-                        imageView.setImage(hitVisualizationImage);
+                Image hitVisualizationImage = Utils.mat2Image(newMat);
+                // show the original frames
+                Platform.runLater(() -> {
+                    imageView.setImage(hitVisualizationImage);
 
-                        hitsLabel.setText(Integer.toString(i));
-                        if (ref.lastArrowPosition != null) {
-                            String x = NumberFormat.getNumberInstance().format(ref.lastArrowPosition.relativeX() * 100);
-                            String y = NumberFormat.getNumberInstance().format(ref.lastArrowPosition.relativeY() * 100);
-                            lastPositionLabel.setText(x + " / " + y);
-                        }
-                    });
-                }
+                    hitsLabel.setText(Integer.toString(i));
+                    if (ref.lastArrowPosition != null) {
+                        String x = NumberFormat.getNumberInstance().format(ref.lastArrowPosition.relativeX() * 100);
+                        String y = NumberFormat.getNumberInstance().format(ref.lastArrowPosition.relativeY() * 100);
+                        lastPositionLabel.setText(x + " / " + y);
+                    }
+                });
 
             }
         };
@@ -130,9 +128,7 @@ public class HitAreaController extends AnalyserController {
         imageView.fitWidthProperty().bind(imgParent.widthProperty());
         imageView.fitHeightProperty().bind(imgParent.heightProperty());
         ChangeListener<Number> imgParentSizeListener = (observable, oldValue, newValue) ->
-        {
-            initBackground();
-        };
+                initBackground();
 
         imgParent.widthProperty().addListener(imgParentSizeListener);
         imgParent.heightProperty().addListener(imgParentSizeListener);

@@ -15,7 +15,6 @@ public class DisplayCameraCalibrationImageProcessor extends ImageProcessor {
     private final List<Mat> imagePoints = new ArrayList<>();
     private final List<Mat> objectPoints = new ArrayList<>();
     private final MatOfPoint3f obj = new MatOfPoint3f();
-    private final int boardsNumber = 20;
     private final int numCornersHor = 9;
     private final int numCornersVer = 6;
     private final Mat lastDetectedChessboardImage = new Mat();
@@ -31,7 +30,7 @@ public class DisplayCameraCalibrationImageProcessor extends ImageProcessor {
         settings = videoInput.getSettings().getCameraCalibration();
         int numSquares = numCornersHor * numCornersVer;
         for (int j = 0; j < numSquares; j++)
-            obj.push_back(new MatOfPoint3f(new Point3(j / this.numCornersHor, j % this.numCornersVer, 0.0f)));
+            obj.push_back(new MatOfPoint3f(new Point3((double) j / this.numCornersHor, j % this.numCornersVer, 0.0f)));
     }
 
     @Override
@@ -89,7 +88,7 @@ public class DisplayCameraCalibrationImageProcessor extends ImageProcessor {
         grayImage.copyTo(lastDetectedChessboardImage);
 
         // show the chessboard inner corners on screen
-        Calib3d.drawChessboardCorners(frame, boardSize, imageCorners, found); //ToDo: In eigenen Visualisierer auslagern
+        Calib3d.drawChessboardCorners(frame, boardSize, imageCorners, true); //ToDo: In eigenen Visualisierer auslagern
         return frame;
     }
 
@@ -106,6 +105,7 @@ public class DisplayCameraCalibrationImageProcessor extends ImageProcessor {
 
         lastCaptured = date;
 
+        int boardsNumber = 20;
         if (imagePoints.size() < boardsNumber) {
             // save all the needed values
             imagePoints.add(imageCorners);

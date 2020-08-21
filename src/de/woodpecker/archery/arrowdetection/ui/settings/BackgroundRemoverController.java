@@ -1,4 +1,4 @@
-package de.woodpecker.archery.arrowdetection.ui.Settings;
+package de.woodpecker.archery.arrowdetection.ui.settings;
 
 import de.woodpecker.archery.arrowdetection.imageprocessors.*;
 import de.woodpecker.archery.arrowdetection.ui.AnalyserController;

@@ -1,4 +1,4 @@
-package de.woodpecker.archery.arrowdetection.ui.Settings;
+package de.woodpecker.archery.arrowdetection.ui.settings;
 
 import de.woodpecker.archery.arrowdetection.captures.Camera;
 import de.woodpecker.archery.arrowdetection.captures.VideoFile;
@@ -43,7 +43,7 @@ public class CameraSelectorController extends AnalyserController {
 
     private void initCameraListItemView() {
         // Setup the CellFactory
-        videoInputListView.setCellFactory(listView -> new ListCell<VideoInput>() {
+        videoInputListView.setCellFactory(listView -> new ListCell<>() {
             {
                 prefWidthProperty().bind(videoInputListView.widthProperty().subtract(20));
                 setMaxWidth(Control.USE_PREF_SIZE);
@@ -90,8 +90,6 @@ public class CameraSelectorController extends AnalyserController {
     }
 
     private void initCameraList() {
-        if (settings == null)
-            return;
         if (videoInputListView.itemsProperty().isBound())
             videoInputListView.itemsProperty().unbind();
         videoInputListView.setItems(settings.getAvailableVideoInput());
@@ -145,7 +143,7 @@ public class CameraSelectorController extends AnalyserController {
     private void unbindFileProperties(VideoInput oldVideoInput) {
         if (!(oldVideoInput instanceof VideoFile))
             return;
-
+        //ToDo
     }
 
     private void unbindCameraProperties(VideoInput oldVideoInput) {

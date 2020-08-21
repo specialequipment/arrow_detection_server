@@ -71,20 +71,18 @@ public final class Utils {
      * @param value    the value to set for the given {@link ObjectProperty}
      */
     public static <T> void onFXThread(final ObjectProperty<T> property, final T value) {
-        Platform.runLater(() -> {
-            property.set(value);
-        });
+        Platform.runLater(() -> property.set(value));
     }
 
     /**
-     * Support for the {@link mat2image()} method
+     * helper function to convert the Image, mostly used in mat2Image
      *
      * @param original the {@link Mat} object in BGR or grayscale
      * @return the corresponding {@link BufferedImage}
      */
     public static BufferedImage matToBufferedImage(Mat original) {
         // init
-        BufferedImage image = null;
+        BufferedImage image;
         int width = original.width(), height = original.height(), channels = original.channels();
         byte[] sourcePixels = new byte[width * height * channels];
         original.get(0, 0, sourcePixels);

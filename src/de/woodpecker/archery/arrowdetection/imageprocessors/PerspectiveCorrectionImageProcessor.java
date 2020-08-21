@@ -39,12 +39,12 @@ public class PerspectiveCorrectionImageProcessor extends ImageProcessor {
 
     private void createWarpMat(Point[] points) throws IllegalArgumentException {
         if (points.length != 4 || points[0] == null || points[1] == null || points[2] == null || points[3] == null) {
-            String msg = "Für die Berechnung werden genau 4 Punkte benötigt, es wurden aber folgede Punkte übergeben:" + System.lineSeparator();
+            StringBuilder msg = new StringBuilder("Für die Berechnung werden genau 4 Punkte benötigt, es wurden aber folgede Punkte übergeben:" + System.lineSeparator());
             for (int i = 0; i < points.length; i++) {
                 if (points[i] != null)
-                    msg += "Punkt " + i + ": " + points[i].toString() + System.lineSeparator();
+                    msg.append("Punkt ").append(i).append(": ").append(points[i].toString()).append(System.lineSeparator());
             }
-            throw new IllegalArgumentException(msg);
+            throw new IllegalArgumentException(msg.toString());
         }
 
         // Source Image from points

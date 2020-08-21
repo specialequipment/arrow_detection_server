@@ -11,11 +11,9 @@ public class Receiver extends Thread {
     private final AtomicBoolean running = new AtomicBoolean(false);
     private final ClientDispatcher dispatcher;
     private final BlockingQueue<String> messages;
-    private final String poisonPill;
 
     public Receiver(ClientDispatcher dispatcher, BlockingQueue<String> messages, String poisonPill) throws IOException {
         this.messages = messages;
-        this.poisonPill = poisonPill;
         this.dispatcher = dispatcher;
         in = new BufferedReader(new InputStreamReader(dispatcher.getSocket().getInputStream()));
     }

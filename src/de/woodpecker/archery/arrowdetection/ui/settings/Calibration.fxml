@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" styleClass="standardBackground" stylesheets="@../../application.css"
 			xmlns="http://javafx.com/javafx/10.0.2-internal"
-			fx:controller="de.woodpecker.archery.arrowdetection.ui.Settings.CalibrationController">
+			fx:controller="de.woodpecker.archery.arrowdetection.ui.settings.CalibrationController">
 	<center>
 		<VBox alignment="CENTER" prefHeight="117.0" prefWidth="207.0">
 			<padding>

@@ -15,7 +15,6 @@ import java.util.concurrent.BlockingQueue;
 
 public class ArrowDetectionImageProcessor extends ImageProcessor {
     private final BlockingQueue<ArrowPosition> arrowPositions;
-    private final ArrowPosition poisonPill;
     private final List<ArrowPositionGroup> arrowPositionGroups = new ArrayList<>();
     private ArrowDetectionImageProcessorSettings settings;
 
@@ -23,7 +22,6 @@ public class ArrowDetectionImageProcessor extends ImageProcessor {
         super(videoInput);
         settings = videoInput.getSettings().getArrowDetection();
         this.arrowPositions = arrowPositions;
-        this.poisonPill = poisonPill;
 
         arrowPositionGroups.add(new ArrowPositionGroup());
     }

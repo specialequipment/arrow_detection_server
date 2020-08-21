@@ -17,7 +17,6 @@ public class Camera extends VideoInput {
     private final DoubleProperty width = new SimpleDoubleProperty();
     private final DoubleProperty height = new SimpleDoubleProperty();
     private final String backendName;
-
     private Image previewImage;
 
     public Camera(int driver, int id, String backendName) {
@@ -26,6 +25,10 @@ public class Camera extends VideoInput {
         this.backendName = backendName;
         this.displayName.set("Kamera " + id + " " + backendName);
         getSettings().setCameraId(id);
+    }
+
+    public String getBackendName() {
+        return backendName;
     }
 
     public double getWidth() {

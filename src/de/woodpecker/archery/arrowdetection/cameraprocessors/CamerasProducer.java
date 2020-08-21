@@ -11,10 +11,10 @@ import static de.woodpecker.archery.arrowdetection.utils.Utils.mat2Image;
 import static org.opencv.videoio.Videoio.*;
 
 public class CamerasProducer implements Runnable {
-    private final static int[] types = {CAP_DSHOW, CAP_VFW, CAP_FIREWIRE, CAP_QT, CAP_UNICAP, CAP_MSMF, CAP_PVAPI, CAP_OPENNI, CAP_OPENNI2, CAP_OPENNI_ASUS, CAP_OPENNI2_ASUS, CAP_XIAPI, CAP_XINE, CAP_AVFOUNDATION, CAP_GIGANETIX, CAP_INTELPERC};
+    private static final int[] TYPES = {CAP_DSHOW, CAP_VFW, CAP_FIREWIRE, CAP_QT, CAP_UNICAP, CAP_MSMF, CAP_PVAPI, CAP_OPENNI, CAP_OPENNI2, CAP_OPENNI_ASUS, CAP_OPENNI2_ASUS, CAP_XIAPI, CAP_XINE, CAP_AVFOUNDATION, CAP_GIGANETIX, CAP_INTELPERC};
     private final Camera poisonPill;
     private final BlockingQueue<Camera> cameraQueue;
-    VideoCapture camera = new VideoCapture();
+    private final VideoCapture camera = new VideoCapture();
 
 
     public CamerasProducer(BlockingQueue<Camera> cameraQueue, Camera poisonPill) {
@@ -23,9 +23,9 @@ public class CamerasProducer implements Runnable {
     }
 
     private void searchForAvailableCameras() throws InterruptedException {
-        for (int i = 0; i < types.length; i++) {
+        for (int type : TYPES) {
             for (int j = 0; j < 100; j++) {
-                reolveCameraForIndex(j + types[i], types[i]);
+                reolveCameraForIndex(j + type, type);
             }
         }
         cameraQueue.put(poisonPill);
@@ -45,7 +45,8 @@ public class CamerasProducer implements Runnable {
                     }
                 }
                 Image cameraPreview = mat2Image(frame);
-                foundCamera.setPreviewImage(cameraPreview);
+                if (cameraPreview != null)
+                    foundCamera.setPreviewImage(cameraPreview);
                 cameraQueue.put(foundCamera);
             }
         } finally {

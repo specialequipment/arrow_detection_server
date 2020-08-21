@@ -1,4 +1,4 @@
-package de.woodpecker.archery.arrowdetection.ui.Settings;
+package de.woodpecker.archery.arrowdetection.ui.settings;
 
 import de.woodpecker.archery.arrowdetection.imageprocessors.CameraCalibrationImageProcessor;
 import de.woodpecker.archery.arrowdetection.imageprocessors.Display4EdgesImageProcessor;

@@ -1,4 +1,4 @@
-package de.woodpecker.archery.arrowdetection.ui.Settings;
+package de.woodpecker.archery.arrowdetection.ui.settings;
 
 import de.woodpecker.archery.arrowdetection.imageprocessors.CameraCalibrationImageProcessor;
 import de.woodpecker.archery.arrowdetection.imageprocessors.DisplayCameraCalibrationImageProcessor;
@@ -50,14 +50,6 @@ public class CalibrationController extends AnalyserController implements Visuali
         // Processor mit der Oberfläche verbinden
         mainImageProcessor.setVisualizationProcessor(editorVisualization);
         mainImageProcessor.setVisualizationController(this);
-    }
-
-    /**
-     * Init all the (global) variables needed in the controller
-     */
-    @FXML
-    public void initialize() {
-
     }
 
     @FXML

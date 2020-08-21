@@ -78,14 +78,15 @@ public class ArrowPositionProducer implements Runnable {
 
     private void prepareWarp(Point[] points) {
         if (points.length != 4 || points[0] == null || points[1] == null || points[2] == null || points[3] == null) {
-            String msg = "Für die Berechnung werden genau 4 Punkte benötigt, es wurden aber folgede Punkte übergeben:" + System.lineSeparator();
+            StringBuilder msg = new StringBuilder("Für die Berechnung werden genau 4 Punkte benötigt, es wurden aber folgede Punkte übergeben:" + System.lineSeparator());
             for (int i = 0; i < points.length; i++) {
                 if (points[i] != null)
-                    msg += "Punkt " + i + ": " + points[i].toString() + System.lineSeparator();
+                    msg.append("Punkt ").append(i).append(": ").append(points[i].toString()).append(System.lineSeparator());
             }
-            throw new IllegalArgumentException(msg);
+            throw new IllegalArgumentException(msg.toString());
         }
 
+        //ToDo: auslagern, da auch im PerspectiveCorrectionController benötigt
         // Source Image from points
         MatOfPoint2f src = new MatOfPoint2f(
                 points[0],
@@ -109,13 +110,12 @@ public class ArrowPositionProducer implements Runnable {
     }
 
     private void detect() throws InterruptedException {
-        while (true) {
+        while (capture != null) {
             // sollte abgebrochen werden
-            if (capture == null)
-                break;
 
             // Von der Kamera lesen
-            Thread.sleep(100);
+            //ToDo: prüfen ob ThreadSleep die richtige Variante ist, ggf anderen Ansatz implementieren und parametrisieren
+            //Thread.sleep(100);
             Mat frame = new Mat();
             capture.read(frame);
             if (!frame.empty()) {
@@ -214,9 +214,9 @@ public class ArrowPositionProducer implements Runnable {
         return undistored;
     }
 
-    private boolean initCapture() {
+    private void initCapture() {
         if (settings == null || settings.getActiveVideoInput() == null)
-            return false;
+            return;
 
         // try to get an Video Capture device
         VideoInput activeVideoInput = settings.getActiveVideoInput();
@@ -227,8 +227,7 @@ public class ArrowPositionProducer implements Runnable {
         if (!capture.isOpened()) {
             //ToDo: ExcaptionHandling
             System.err.println("Impossible to open the camera connection...");
-            return false;
+            return;
         }
-        return true;
     }
 }
